@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Mining Console</title>
+    <style>
+        body { background: black; color: #33ff33; font-family: Courier, monospace; font-size: 14px; padding: 10px; }
+        #console { height: 300px; overflow-y: auto; border: 1px solid #00ff00; padding: 5px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <pre id="console">Initializing Miner...</pre>
+
+    <script>
+        function addLog(logMessage) {
+            let consoleDiv = document.getElementById('console');
+            consoleDiv.innerHTML += "\n" + logMessage;
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        // Simulate log updates
+        setTimeout(() => addLog('[INFO] Connecting to Pool...'), 1000);
+        setTimeout(() => addLog('[INFO] Starting Hashing...'), 2000);
+        setTimeout(() => addLog('[INFO] Solved Block 3.42%...'), 3000);
+    </script>
+</body>
+</html>
