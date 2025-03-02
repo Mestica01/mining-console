@@ -19,7 +19,14 @@
             consoleDiv.scrollTop = consoleDiv.scrollHeight;
         }
 
-        // Simulate log updates
+        // Listen for messages from Thunkable
+        window.addEventListener("message", function(event) {
+            if (event.data && typeof event.data === "string") {
+                addLog(event.data);
+            }
+        }, false);
+
+        // Simulate initial logs
         setTimeout(() => addLog('[INFO] Connecting to Pool...'), 1000);
         setTimeout(() => addLog('[INFO] Starting Hashing...'), 2000);
         setTimeout(() => addLog('[INFO] Solved Block 3.42%...'), 3000);
