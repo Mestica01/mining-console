@@ -35,7 +35,7 @@
             if (logMessage.includes("ERROR")) color = "#ff0000"; // Red
 
             let consoleDiv = document.getElementById("console");
-            consoleDiv.innerHTML += `<span style='color:${color}'>${timeString} ${logMessage}</span>\n`;
+            consoleDiv.innerHTML += `<span style='color:${color}'>${timeString} ${logMessage}</span><br>`;
         }
 
         // Listen for messages from Thunkable
