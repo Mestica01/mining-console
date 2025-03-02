@@ -27,9 +27,15 @@
 
     <script>
         function addLog(logMessage) {
-            let consoleDiv = document.getElementById('console');
-            consoleDiv.innerHTML += "\n" + logMessage;
-            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+            let now = new Date();
+            let timeString = `[${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}]`;
+            
+            let color = "#33ff33"; // Default Green
+            if (logMessage.includes("WARNING")) color = "#ffff00"; // Yellow
+            if (logMessage.includes("ERROR")) color = "#ff0000"; // Red
+
+            let consoleDiv = document.getElementById("console");
+            consoleDiv.innerHTML += `<span style='color:${color}'>${timeString} ${logMessage}</span>\n`;
         }
 
         // Listen for messages from Thunkable
@@ -39,22 +45,10 @@
             }
         }, false);
 
-        // Simulate initial logs
-    
-        setTimeout(() => addLog('Connecting to Pool...'), 1000);
-        setTimeout(() => addLog('[INFO] 12 pools specified'), 2000);
-        setTimeout(() => addLog('[INFO] New block detected'), 3000);
-        setTimeout(() => addLog('\main    [p2p/server.go:315] Starting Server...'), 4000);
-        setTimeout(() => addLog('\main    Block synchronisation started'), 5000);
-        setTimeout(() => addLog('\main    Starting Hashing...'), 6000);
-        setTimeout(() => addLog('\main    Getting work package...'), 7000);
-        setTimeout(() => addLog('\main    Got work package: 77b43495'), 8000);
-        setTimeout(() => addLog('\main    Adding New Contract: SHA-256'), 9000);
-        
-        //setTimeout(() => addLogMining on HashBit 77b43495 : 8.39MH/s'), 9000);
-        //setTimeout(() => addLogMining on HashBit 77b43495 : 14.27MH/s'), 9000);
-       
+        // Simulated logs for testing
+        setTimeout(() => addLog('[INFO] Connecting to Pool...'), 1000);
+        setTimeout(() => addLog('[INFO] Starting Hashing...'), 2000);
+        setTimeout(() => addLog('[INFO] Solved Block 3.42%...'), 3000);
     </script>
-
 </body>
 </html>
